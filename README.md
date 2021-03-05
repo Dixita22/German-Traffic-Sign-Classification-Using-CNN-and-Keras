@@ -4,7 +4,7 @@ In this project, I used Python and TensorFlow to classify traffic signs.
 Dataset used: [German Traffic Sign Dataset](https://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset). This dataset has more than 50,000 images of 43 classes.
 96.06% testing accuracy.
 
-**# Pipeline architecture:**
+# Pipeline architecture:
 
 - Load The Data.
 - Dataset Summary & Exploration
@@ -20,7 +20,7 @@ Dataset used: [German Traffic Sign Dataset](https://benchmark.ini.rub.de/?sectio
 - Testing the Model Using the Test Set.
 - Testing the Model on New Images.
 
-**# Step 1: Load The Data**
+# Step 1: Load The Data
 
 Download the dataset from [here](https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/published-archive.html). This is a pickled dataset in which we've already resized the images to 32x32.
 We already have three .p files of 32x32 resized images:
@@ -29,7 +29,7 @@ We already have three .p files of 32x32 resized images:
 - valid.p: The validation set.
 We will use Python pickle to load the data.
 
-**# Step 2: Dataset Summary & Exploration**
+# Step 2: Dataset Summary & Exploration
 
 The pickled data is a dictionary with 4 key/value pairs:
 
@@ -42,9 +42,9 @@ The pickled data is a dictionary with 4 key/value pairs:
 
 **Then, we used matplotlib plot sample images from each subset.**
 
-**# And finally, we will use numpy to plot a histogram of the count of images in each unique class.**
+# And finally, we will use numpy to plot a histogram of the count of images in each unique class.
 
-**# Step 3: Data Preprocessing**
+# Step 3: Data Preprocessing
 
 In this step, we will apply several preprocessing steps to the input images to achieve the best possible results.
 
@@ -58,7 +58,7 @@ In this step, we will apply several preprocessing steps to the input images to a
 
 **4. Normalization:** Normalization is a process that changes the range of pixel intensity values. Usually the image data should be normalized so that the data has mean zero and equal variance.
 
-**# Step 4: Design a Model Architecture**
+# Step 4: Design a Model Architecture
 
 In this step, we will design and implement a deep learning model that learns to recognize traffic signs. We'll use Convolutional Neural Networks to classify the images in this dataset. The reason behind choosing ConvNets is that they are designed to recognize visual patterns directly from pixel images with minimal preprocessing. They automatically learn hierarchies of invariant features at every level from data. We will implement two of the most famous ConvNets. Our goal is to reach an accuracy of +95% on the validation set. I'll start by explaining each network architecture, then implement it using TensorFlow
 
@@ -140,7 +140,7 @@ Input => Convolution => ReLU => Convolution => ReLU => Pooling => Convolution =>
 
 **Layer 12 (Fully Connected):** This should have 43 outputs.
 
-**# Step 5: Model Training and Evaluation**
+# Step 5: Model Training and Evaluation
 
 In this step, we will train our model using normalized_images, then we'll compute softmax cross entropy between logits and labels to measure the model's error probability.
 
@@ -151,7 +151,7 @@ Now, we'll run the training data through the training pipeline to train the mode
 - And after training, we will save the model.
 - A low accuracy on the training and validation sets imply underfitting. A high accuracy on the training set but low accuracy on the validation set implies overfitting.
 
-**# Step 6: Testing the Model using the Test Set**
+# Step 6: Testing the Model using the Test Set
 
 Now, we'll use the testing set to measure the accuracy of the model over unknown examples. We've been able to reach a Test accuracy of 96.06%. A remarkable performance.
 
@@ -159,7 +159,7 @@ Now we'll plot the confusion matrix to see where the model actually fails.
 
 We observe some clusters in the confusion matrix above. It turns out that the various speed limits are sometimes misclassified among themselves. Similarly, traffic signs with traingular shape are misclassified among themselves. We can further improve on the model using hierarchical CNNs to first identify broader groups (like speed signs) and then have CNNs to classify finer features (such as the actual speed limit).
 
-**# Step 7: Testing the Model on New Images**
+# Step 7: Testing the Model on New Images
 ![Screenshot](output.png)
 
 **# Conclusion**
